@@ -3,18 +3,12 @@ package main
 import "fmt"
 
 func main(){
-	showDetail(pizza)
-	
+	fmt.Println(factorial(0))
 }
 
-func pizza()(string , int ,string){
-	return "PiZZA" , 3500 , "Cheese + PePeroni"
-}
-
-func showDetail(f func() (string,int,string)){
-	name,price,ingredients := f()
-	fmt.Println("Show food details:")
-	fmt.Println("Name:" , name)
-	fmt.Println("Price:" , price)
-	fmt.Println("ingredients:" , ingredients)
+func factorial (n int) int {
+	if n == 0{
+		return 1 
+	}
+	return n * factorial(n-1)
 }
