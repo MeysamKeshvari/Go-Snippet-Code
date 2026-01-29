@@ -22,9 +22,9 @@ func sliceShareData(){
 	fmt.Println(a)
 }
 
-func sum(nums ...int)int {
+func sum(numbers ...int)int {
 	total:=0
-	for _,n := range nums {
+	for _,n := range numbers {
 		total += n 
 	} 
 	return total
@@ -37,7 +37,7 @@ func greet(prefix string,names ...string){
 	}
 }
 
-func multiplyAll(nums ... int) int {
+func multiplyAll(nums ... int)int {
 
 	if len(nums) == 0 {
 		return 1 
