@@ -12,12 +12,50 @@ func main() {
 	//createAndWriteFile()
 	//osWriteFile()
 	//readFromFile()
-	osReadFile()
+	//osReadFile()
+	//removeFile()
+	//copyFile()
+	//createFolder()
+	createNestedFolder()
+}
+
+func createNestedFolder(){
+	err := os.MkdirAll("a/b/c/d",0777)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func createFolder(){
+
+	err := os.Mkdir("images",0777)
+	if err != nil {
+		panic(err)	
+	}
+}
+
+func copyFile(){
+	src, err := os.Open("file.txt")
+	if err != nil {
+		panic(err)
+	}
+	dst, err := os.Create("file2.txt")
+	if err != nil {
+		panic(err)
+	}
+	io.Copy(dst,src)
+}
+
+func removeFile(){
+	err := os.Remove("myfile.txt")
+	if err != nil {
+		panic(err)
+	}
 }
 
 func osReadFile(){
 	bs,err := os.ReadFile("file.txt")
-	if err!=nil{
+	if err != nil{
 		panic(err)
 	}
 	fmt.Println(string(bs))
