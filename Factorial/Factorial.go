@@ -4,10 +4,11 @@ import "fmt"
 
 func main(){
 	visualFactorial(3)
+	fact()
+
 }
 
 //3! = 3 * 2 * 1 = 6
-
 func visualFactorial(n int) {
 	
 	for i := n; i <= n; i-- {
@@ -24,4 +25,16 @@ func factorial(n int) int {
 		return 1 
 	}
 	return n * factorial(n-1)
+}
+
+
+func fact(num int) int {
+	result := 1
+
+	for i := 1; i <= num; i++ {
+		result *= i
+	}
+
+	fmt.Println("Result", result)
+	return result
 }
