@@ -7,17 +7,8 @@ import (
 )
 
 func main(){
-	//strToDigit()
-	//digitToStr()
-
-	err := checkPassword("test")
-	if err!= nil {
-		fmt.Println(err)
-	}else {
-		fmt.Println("welcome")
-	}
-
-	
+	strToDigit()
+	digitToStr()
 }
 
 func digitToStr(){
@@ -42,10 +33,4 @@ func strToDigit(){
 	}	
 }
 
-func checkPassword(password string) error {
-	if password != "somethings" {
-		return errors.New("you are not authorized")
-	}
-	return nil 
-}
 
