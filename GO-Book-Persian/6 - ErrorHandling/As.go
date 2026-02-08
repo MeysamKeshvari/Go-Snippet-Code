@@ -6,8 +6,11 @@ import(
 	"fmt"
 )
 
-func main(){
-	err := ValidateUser()
+func main() {
+	//err := ValidateUser()
+
+	err := errors.New("Some error")
+
 	validationErr := new(UserValidation)
 	if errors.As(err ,validationErr){
 		fmt.Println("Error:", validationErr.Message)
