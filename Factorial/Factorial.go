@@ -1,23 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main(){
-	visualFactorial(3)
-	fact()
-
+	factorialWithSteps(3)
 }
 
-//3! = 3 * 2 * 1 = 6
-func visualFactorial(n int) {
-	
-	for i := n; i <= n; i-- {
-		n = n - 1
+func factorialWithSteps(n int){
+	result := 1
+	var parts []string
+	for i := n; i >= 1; i-- {
+		result *= i
+		parts = append(parts, fmt.Sprintf("%d",i))
 	}
-	//middle := n-
-
-	fmt.Println(n,"!", "=" ,n , "", "=" ,factorial(n))
-
+	fmt.Printf("%d! = %s = %d\n", n, strings.Join(parts, " × "), result)
 }
 
 func factorial(n int) int {
@@ -28,13 +27,3 @@ func factorial(n int) int {
 }
 
 
-func fact(num int) int {
-	result := 1
-
-	for i := 1; i <= num; i++ {
-		result *= i
-	}
-
-	fmt.Println("Result", result)
-	return result
-}
