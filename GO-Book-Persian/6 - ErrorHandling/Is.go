@@ -12,17 +12,18 @@ func main(){
 		fmt.Println("using == to find out if errors are equal")
 	}
 
-	if errors.is(err , invalidUserErr){
+	if errors.Is(err, invalidUserErr) {
 		fmt.Println("using errors.Is to find out if errors are equal")
 	}
 }
 
 var invalidUserErr = errors.New("User is invalid")
+
 func ValidateUser() error {
 	return invalidUserErr
 }
 
-func RegisterUser() error{
+func RegisterUser() error {
 	err:= ValidateUser()
 	if err != nil {
 		return fmt.Errorf("Error during registration: %w" , err)
