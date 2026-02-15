@@ -18,7 +18,6 @@ func main() {
 	//createFolder()
 	createNestedFolder()
 }
-
 func createNestedFolder(){
 	err := os.MkdirAll("a/b/c/d",0777)
 	if err != nil {
@@ -35,6 +34,7 @@ func createFolder(){
 }
 
 func copyFile(){
+	
 	src, err := os.Open("file.txt")
 	if err != nil {
 		panic(err)
