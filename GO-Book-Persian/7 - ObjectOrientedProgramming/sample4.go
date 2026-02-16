@@ -1,18 +1,6 @@
 package main 
 
 import "fmt"
- 
-func main() {
-	r := rectangle {
-		width:3,
-		height:7,
-	}
-	c:= circle {
-		radius:7,
-	}
-	printArea(r)
-	printArea(c)
-}
 
 type rectangle struct { 
 	width float64
@@ -24,19 +12,27 @@ type circle struct {
 }
 
 type shape interface {
-	area() float64
+	areas() float64
 }
 
-func (r rectangle) area() float64{
+func (r rectangle) area() float64 {
 	return r.width * r.height
 }
 
-func (c circle) area() float64{
+func (c circle) area() float64 {
 	return c.radius * c.radius * 3.14
 }
 
 func printArea(s shape) {
 	fmt.Println("Area is:", s.area())
+}
+
+
+func main() {
+	r := rectangle {width:3,height:7}
+	c:= circle {radius:7}
+	printArea(r)
+	printArea(c)
 }
 
 
