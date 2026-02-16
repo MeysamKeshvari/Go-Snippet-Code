@@ -2,16 +2,14 @@ package main
 
 import "fmt"
 
-func main(){
+func main() {
 
 	u := User {
 		FirstName : "Bob",
 		LastName : "alice",
 	}
 
-
-
-	fmt.Println("Result" , u.GetFullName())
+	fmt.Println("full Name:" , u.GetFullName())
 }
 
 type User struct {
@@ -21,7 +19,7 @@ type User struct {
 }
 
 func (u *User) setFullName() {
-	u.fullName = u.FirstName + " _" + u.LastName
+	u.fullName = u.FirstName + " " + u.LastName
 }
 
 func (u *User) GetFullName() string {
