@@ -23,14 +23,14 @@ func sliceShareData(){
 }
 
 func sum(numbers ...int)int {
-	total:=0
+	total := 0
 	for _,n := range numbers {
 		total += n 
 	} 
 	return total
 }
 
-func greet(prefix string,names ...string){
+func greet(prefix string,names ...string) {
 
 	for _,name := range names {
 		fmt.Println(prefix,name)
