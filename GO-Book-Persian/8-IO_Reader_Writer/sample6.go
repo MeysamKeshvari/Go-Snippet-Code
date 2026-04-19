@@ -1,0 +1,39 @@
+package main 
+
+import (
+	"fmt"
+	"io"
+)
+type String struct {
+	data string 
+	pos int
+}
+
+func (s *String) Read(b []byte) (int,error) {
+	n:= copy(b, s.data[s.pos:])
+	s.pos += n
+
+	var err error 
+	if s.pos >= len(s.data){
+		err = io.EOF
+	}
+	return n, err
+}
+
+func (s *String) Write(b []byte) (int, error){
+	s.data += string(b)
+	return len(b), nil
+}
+
+func main(){
+	var str String
+	str.Write([]byte("Hello World"))
+	buffer := make([]byte,3)
+	var n int 
+	var err error 
+	for err != io.EOF{
+		n, err = str.Read(buffer)
+		fmt.Print(string(buffer[:n]),"/")
+	}
+	
+}

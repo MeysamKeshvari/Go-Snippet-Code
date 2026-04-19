@@ -11,5 +11,5 @@ func SayHello(w io.Writer){
 func main(){
 	file,_ := os.Create("hello.txt")
 	defer file.Close()
-	SayHello("file")
+	SayHello(file)
 } 
