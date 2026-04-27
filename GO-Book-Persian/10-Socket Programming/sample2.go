@@ -31,6 +31,6 @@ func main(){
 			return
 		}
 
-		fmt.Fprint(conn,message)
+		fmt.Fprint(conn,message) 
 	}
 }
