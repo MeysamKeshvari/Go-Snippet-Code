@@ -1,26 +1,25 @@
-# Book Store Cli
+## Book Store Cli
 
-
-# clone a repo
+## clone a repo
 git clone https://github.com/akilans/golang-mini-projects.git
 
-# go to the 01-bookstore-cli-flag-json dir
+## go to the 01-bookstore-cli-flag-json dir
 cd 01-bookstore-cli-flag-json
 
-# build
+## build
 go build
 
-# run
+## run
 
-# get books
+## get books
 ./bookstore get --all
 ./bookstore get --id 5
 
-# add a book with id ,title, author, price, image_url
+## add a book with id ,title, author, price, image_url
 ./bookstore add --id 6 --title test-book --author akilan --price 200 --image_url http://akilan.com/test.png
 
-# update a book with id ,title, author, price, image_url
+## update a book with id ,title, author, price, image_url
 ./bookstore update --id 6 --title test-book-1 --author akilan1 --price 2001 --image_url http://akilan.com/test.png1
 
-# delete a book by --id
+## delete a book by --id
 ./bookstore delete --id 6
