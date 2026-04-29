@@ -1,8 +1,5 @@
 ## Book Store Cli
 
-## go to the 01-bookstore-cli-flag-json dir
-cd 01-bookstore-cli-flag-json
-
 ## build
 go build
 
