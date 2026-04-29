@@ -35,13 +35,13 @@ func main() {
 
 	switch os.Args[1] {
 	case "get":
-		handleGetBooks(getCmd, getAll, getId)
+		HandleGetBooks(getCmd, getAll, getId)
 	case "add":
-		handleAddBook(addCmd, addId, addTitle, addAuthor, addPrice, true)
+		HandleAddBook(addCmd, addId, addTitle, addAuthor, addPrice, true)
 	case "update":
-		handleAddBook(updateCmd, updateId, updateTitle, updateAuthor, updatePrice, false)
+		HandleAddBook(updateCmd, updateId, updateTitle, updateAuthor, updatePrice, false)
 	case "delete":
-		handleDeleteBook(deleteCmd, deleteId)
+		HandleDeleteBook(deleteCmd, deleteId)
 	default:
 		fmt.Println("Please provide get, update, update, delete commands")
 		os.Exit(1)
