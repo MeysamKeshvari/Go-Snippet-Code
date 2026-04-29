@@ -5,12 +5,6 @@ import (
 	"fmt"
 	"os"
 )
-type Book struct {
-	Id       string `json:"id"`
-	Title    string `json:"title"`
-	Author   string `json:"author"`
-	Price    string `json:"price"`
-}
 
 func main() {
 
@@ -33,6 +27,7 @@ func main() {
 	deleteCmd := flag.NewFlagSet("delete", flag.ExitOnError)
 	deleteId := deleteCmd.String("id", "", "Delete book by id")
 
+	// validation
 	if len(os.Args) < 2 {
 		fmt.Println("Expected get, add, update, delete commands")
 		os.Exit(1)
@@ -42,7 +37,7 @@ func main() {
 	case "get":
 		handleGetBooks(getCmd, getAll, getId)
 	case "add":
-		handleAddBook(addCmd, addId, addTitle, addAuthor, addPrice,true)
+		handleAddBook(addCmd, addId, addTitle, addAuthor, addPrice, true)
 	case "update":
 		handleAddBook(updateCmd, updateId, updateTitle, updateAuthor, updatePrice, false)
 	case "delete":
