@@ -24,6 +24,7 @@ func starPatternRight(){
 			fmt.Print("* ")
 		}
 		fmt.Println("")
+		
 	}
 }
 
@@ -46,8 +47,4 @@ func star(){
 		fmt.Println()
     }
 }
-
-
-
-
 

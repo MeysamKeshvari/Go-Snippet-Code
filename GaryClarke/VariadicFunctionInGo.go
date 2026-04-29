@@ -47,5 +47,6 @@ func multiplyAll(nums ... int)int {
 	for _,n := range nums{
 		result *= n
 	}
+	
 	return result
 }
