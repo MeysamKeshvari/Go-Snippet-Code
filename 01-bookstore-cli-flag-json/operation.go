@@ -17,7 +17,7 @@ func checkError(err error) {
 }
 // get all the books
 func getBooks() (books []models.Book) {
-	booksBytes, err := ioutil.ReadFile("./books.json")
+	booksBytes, err := ioutil.ReadFile("./json/books.json")
 	checkError(err)
 	err = json.Unmarshal(booksBytes, &books)
 	checkError(err)
@@ -30,7 +30,7 @@ func saveBooks(books []models.Book) error {
 	// converting into bytes for writing into a file
 	booksBytes, err := json.Marshal(books)
 	checkError(err)
-	err = ioutil.WriteFile("./books.json", booksBytes, 0644)
+	err = ioutil.WriteFile("./json/books.json", booksBytes, 0644)
 	return err
 }
 

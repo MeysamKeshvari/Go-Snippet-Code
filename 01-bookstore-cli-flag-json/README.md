@@ -16,10 +16,10 @@ go build
 ./bookstore get --id 5
 
 ## add a book with id ,title, author, price, image_url
-./bookstore add --id 6 --title test-book --author akilan --price 200 --image_url http://akilan.com/test.png
+./bookstore add --id 6 --title test-book --author akilan --price 200
 
 ## update a book with id ,title, author, price, image_url
-./bookstore update --id 6 --title test-book-1 --author akilan1 --price 2001 --image_url http://akilan.com/test.png1
+./bookstore update --id 6 --title test-book-1 --author akilan1 --price 2001 
 
 ## delete a book by --id
 ./bookstore delete --id 6
