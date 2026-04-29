@@ -1,12 +1,12 @@
 package main
 
 import (
+	"bookstore/models"
 	"encoding/json"
 	"flag"
 	"fmt"
 	"io/ioutil"
 	"os"
-	"01-bookstore-cli-flag-json/models"
 )
 
 func checkError(err error) {
@@ -15,6 +15,7 @@ func checkError(err error) {
 		os.Exit(1)
 	}
 }
+
 // get all the books
 func getBooks() (books []models.Book) {
 	booksBytes, err := ioutil.ReadFile("./json/books.json")
@@ -34,10 +35,9 @@ func saveBooks(books []models.Book) error {
 	return err
 }
 
-
 // get all the books logic
 func handleGetBooks(getCmd *flag.FlagSet, all *bool, id *string) {
-	
+
 	getCmd.Parse(os.Args[2:])
 	// checking for all or id
 	if !*all && *id == "" {
@@ -76,6 +76,7 @@ func handleGetBooks(getCmd *flag.FlagSet, all *bool, id *string) {
 		}
 	}
 }
+
 // add or update a book logic
 func handleAddBook(addCmd *flag.FlagSet, id, title, author, price *string, addNewBook bool) {
 	addCmd.Parse(os.Args[2:])
@@ -86,6 +87,14 @@ func handleAddBook(addCmd *flag.FlagSet, id, title, author, price *string, addNe
 		os.Exit(1)
 	}
 	books := getBooks()
+	
+	for _,bookss := range books{
+		if bookss.Id == *id {
+			fmt.Println("Book id before added")
+			os.Exit(1)	
+		}
+	}
+
 	var newBook models.Book
 	// to check a book exist or not
 	var foundBook bool
@@ -96,37 +105,34 @@ func handleAddBook(addCmd *flag.FlagSet, id, title, author, price *string, addNe
 	} else {
 		for i, book := range books {
 			if book.Id == *id {
-				// replace old values with new ones
+			// replace old values with new ones
 				books[i] = models.Book{*id, *title, *author, *price}
 				foundBook = true
 			}
 		}
-		// if no book found with mentioned id throws an error
+				// if no book found with mentioned id throws an error
 		if !foundBook {
 			fmt.Println("Book not found")
 			os.Exit(1)
 		}
-	}
+	}	
+
 	err := saveBooks(books)
 	checkError(err)
 	fmt.Println("Book added successfully")
 }
 
 func handleDeleteBook(deleteCmd *flag.FlagSet, id *string) {
-
 	deleteCmd.Parse(os.Args[2:])
-
 	if *id == "" {
 		fmt.Println("Please provide book --id")
 		deleteCmd.PrintDefaults()
 		os.Exit(1)
 	}
-
 	books := getBooks()
+	
 	var foundBook bool
-
 	for i, book := range books {
-		
 		if book.Id == *id {
 			// There is no direct delete
 			// so creating 2 books structs without the targeted book and appending
@@ -142,4 +148,17 @@ func handleDeleteBook(deleteCmd *flag.FlagSet, id *string) {
 	err := saveBooks(books)
 	checkError(err)
 	fmt.Println("Book deleted successfully")
+}
+
+
+func handleDeleteAllBooks(deleteCmd *flag.FlagSet,all *bool){
+	deleteCmd.Parse(os.Args[2:])
+	
+	books := getBooks()
+	books = books[:0]
+	
+	err := saveBooks(books)
+	checkError(err)
+	fmt.Println("All Book deleted successfully")
+
 }

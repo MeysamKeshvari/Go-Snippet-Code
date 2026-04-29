@@ -17,15 +17,16 @@ func main() {
 	addTitle := addCmd.String("title", "", "Book title")
 	addAuthor := addCmd.String("author", "", "Book author")
 	addPrice := addCmd.String("price", "", "Book price")
-	
+
 	updateCmd := flag.NewFlagSet("update", flag.ExitOnError)
 	updateId := updateCmd.String("id", "", "Book id")
 	updateTitle := updateCmd.String("title", "", "Book title")
 	updateAuthor := updateCmd.String("author", "", "Book author")
 	updatePrice := updateCmd.String("price", "", "Book price")
-	
+
 	deleteCmd := flag.NewFlagSet("delete", flag.ExitOnError)
 	deleteId := deleteCmd.String("id", "", "Delete book by id")
+	deleteAll := deleteCmd.Bool("all",false,"Delete All books")
 
 	// validation
 	if len(os.Args) < 2 {
@@ -35,13 +36,15 @@ func main() {
 
 	switch os.Args[1] {
 	case "get":
-		HandleGetBooks(getCmd, getAll, getId)
+		handleGetBooks(getCmd, getAll, getId)
 	case "add":
-		HandleAddBook(addCmd, addId, addTitle, addAuthor, addPrice, true)
+		handleAddBook(addCmd, addId, addTitle, addAuthor, addPrice, true)
 	case "update":
-		HandleAddBook(updateCmd, updateId, updateTitle, updateAuthor, updatePrice, false)
+		handleAddBook(updateCmd, updateId, updateTitle, updateAuthor, updatePrice, false)
 	case "delete":
-		HandleDeleteBook(deleteCmd, deleteId)
+		handleDeleteBook(deleteCmd, deleteId)
+	case "deleteAll":
+		handleDeleteAllBooks(deleteCmd,deleteAll)
 	default:
 		fmt.Println("Please provide get, update, update, delete commands")
 		os.Exit(1)

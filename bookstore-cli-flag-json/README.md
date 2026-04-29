@@ -17,3 +17,6 @@ go build
 
 ## delete a book by --id
 ./bookstore delete --id 6
+
+## All delete books 
+./bookstore deleteAll --all
