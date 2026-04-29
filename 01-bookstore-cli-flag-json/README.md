@@ -1,8 +1,5 @@
 ## Book Store Cli
 
-## clone a repo
-git clone https://github.com/akilans/golang-mini-projects.git
-
 ## go to the 01-bookstore-cli-flag-json dir
 cd 01-bookstore-cli-flag-json
 
