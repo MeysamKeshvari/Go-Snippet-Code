@@ -6,6 +6,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"01-bookstore-cli-flag-json/models"
 )
 
 func checkError(err error) {
@@ -15,7 +16,7 @@ func checkError(err error) {
 	}
 }
 // get all the books
-func getBooks() (books []Book) {
+func getBooks() (books []models.Book) {
 	booksBytes, err := ioutil.ReadFile("./books.json")
 	checkError(err)
 	err = json.Unmarshal(booksBytes, &books)
@@ -24,7 +25,7 @@ func getBooks() (books []Book) {
 }
 
 // save books to books.json file
-func saveBooks(books []Book) error {
+func saveBooks(books []models.Book) error {
 
 	// converting into bytes for writing into a file
 	booksBytes, err := json.Marshal(books)
@@ -85,18 +86,18 @@ func handleAddBook(addCmd *flag.FlagSet, id, title, author, price *string, addNe
 		os.Exit(1)
 	}
 	books := getBooks()
-	var newBook Book
+	var newBook models.Book
 	// to check a book exist or not
 	var foundBook bool
 	// checking for add or update
 	if addNewBook {
-		newBook = Book{*id, *title, *author, *price}
+		newBook = models.Book{*id, *title, *author, *price}
 		books = append(books, newBook)
 	} else {
 		for i, book := range books {
 			if book.Id == *id {
 				// replace old values with new ones
-				books[i] = Book{*id, *title, *author, *price}
+				books[i] = models.Book{*id, *title, *author, *price}
 				foundBook = true
 			}
 		}
