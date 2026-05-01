@@ -151,7 +151,7 @@ func handleDeleteBook(deleteCmd *flag.FlagSet, id *string) {
 }
 
 
-func handleDeleteAllBooks(deleteCmd *flag.FlagSet,all *bool){
+func handleDeleteAllBooks(deleteCmd *flag.FlagSet){
 	deleteCmd.Parse(os.Args[2:])
 	
 	books := getBooks()

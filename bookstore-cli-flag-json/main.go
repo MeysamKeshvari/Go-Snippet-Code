@@ -26,7 +26,7 @@ func main() {
 
 	deleteCmd := flag.NewFlagSet("delete", flag.ExitOnError)
 	deleteId := deleteCmd.String("id", "", "Delete book by id")
-	deleteAll := deleteCmd.Bool("all",false,"Delete All books")
+	//deleteAll := deleteCmd.Bool("all",false,"Delete All books")
 
 	// validation
 	if len(os.Args) < 2 {
@@ -44,7 +44,7 @@ func main() {
 	case "delete":
 		handleDeleteBook(deleteCmd, deleteId)
 	case "deleteAll":
-		handleDeleteAllBooks(deleteCmd,deleteAll)
+		handleDeleteAllBooks(deleteCmd)
 	default:
 		fmt.Println("Please provide get, update, update, delete commands")
 		os.Exit(1)
