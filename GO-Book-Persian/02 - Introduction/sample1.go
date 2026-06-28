@@ -1,14 +1,33 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"net"
+	"log"
+)
+
 
 func main() {
+	
+	const (
+		network = "tcp"
+		address = "127.0.0.1:"
+	)
+
+	listener,err:= net.Listen(network,address)
+	if err != nil {
+		log.Fatalln("can't listen on given address",address,err)
+	}
+	fmt.Println("Listener address", listener.Addr())
+
+
+
 	fmt.Println("hello world")
 
 	fmt.Println(`hello 
 	world`)
 
-	fmt.Println("Parsa is a good student")
+	fmt.Println("Alice is a good student")
 
 	var age int
 	var name string
@@ -203,3 +222,5 @@ func main() {
 b:
 	fmt.Println("B")
 }
+
+
